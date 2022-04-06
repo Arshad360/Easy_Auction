@@ -21,7 +21,7 @@ def login_view(request):
         # Check if authentication successful
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse("auction_app:index"))
+            return HttpResponseRedirect(reverse("index"))
         else:
             return render(request, "auction_app/login.html", {
                 "message": "Invalid username and/or password."

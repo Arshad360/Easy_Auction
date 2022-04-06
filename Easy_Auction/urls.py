@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from auction_app import views
+from django.contrib.auth.views import LoginView, LogoutView
 
 app_name = "auction_app"
 urlpatterns = [
@@ -23,4 +24,5 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("login", views.login_view, name="login"),
     path("signup", views.signup, name="signup"),
+    path('logout', LogoutView.as_view(template_name='auction_app/logout.html'), name='logout'),
 ]
