@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="{% static 'auction_app/styles.css' %}" rel="stylesheet">
+   
   </head>
   <body>
     <h1 id="auction-title">Easy Auctions</h1>
@@ -28,14 +28,21 @@
           <a class="nav-link" href="">WatchList</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Log Out</a>
+            <a class="nav-link" href="">My Posted Items</a>
+          </li>
+        <a href="/" class="float">
+            <i class="fa fa-plus my-float"></i>
+            
+          </a>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Log Out</a>
         </li>
         {% else %}
         <li class="nav-item">
           <a class="nav-link" href="/login">Log In</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Register</a>
+          <a class="nav-link" href="/signup">SignUp</a>
         </li>
         {% endif %}
       </ul>
@@ -44,5 +51,6 @@
     <hr>
     {% block body %}
     {% endblock %}
+    {% include "auction_app/footer.html" %}
   </body>
 </html>

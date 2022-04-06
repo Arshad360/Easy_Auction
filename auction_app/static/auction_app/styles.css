@@ -116,7 +116,23 @@
     font-size: 20px;
     border-radius: 5px;
   }
-  
+
+  .float{
+    position:absolute;
+    width:70px;
+    height:70px;
+    bottom:150px;
+    right:60px;
+    background-color:rgb(47, 29, 212);
+    color:rgb(5, 5, 5);
+    border-radius:50px;
+    text-align:center;
+    box-shadow: 3px 3px 3px #999;
+  }
+
+  .my-float{
+    margin-top:22px;
+  }
   .listing-form {
     margin-top: 2.5%;
   }
