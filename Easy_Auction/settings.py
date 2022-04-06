@@ -87,6 +87,7 @@ DATABASES = {
         }
     }
 }
+
 AUTH_USER_MODEL = 'auction_app.User'
 
 # Password validation
