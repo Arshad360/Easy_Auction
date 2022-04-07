@@ -25,4 +25,6 @@ urlpatterns = [
     path("login", views.login_view, name="login"),
     path("signup", views.signup, name="signup"),
     path('logout', LogoutView.as_view(template_name='auction_app/logout.html'), name='logout'),
+    
+    path("addListing", views.addListing, name="add_listing"),
 ]

@@ -1,10 +1,18 @@
+
+from django import forms
+from . import forms, models
 from django.db import IntegrityError
-from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.contrib import messages
 
-from auction_app.models import User
+from decimal import *
+
+from .models import User
+from .forms import ListingForm
+
 
 # Create your views here.
 def index(request):
@@ -54,3 +62,26 @@ def signup(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "auction_app/signup.html")
+
+
+def addListing(request):
+    if request.method == "POST":
+        form = ListingForm(request.POST)
+
+        if form.is_valid():
+            newListing = form.save(commit=False)
+            newListing.user = request.user
+            newListing.save()
+            messages.success(request, 'Successfully created your listing.', fail_silently=True)
+        else:
+            messages.error(request, 'Invalid Listing!', fail_silently=True)
+            return HttpResponseRedirect('addListing')
+        return redirect(reverse("index"))
+    form = ListingForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'auction_app/createauction.html', context)
+
+
+
