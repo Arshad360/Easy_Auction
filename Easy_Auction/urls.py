@@ -21,10 +21,10 @@ from django.contrib.auth.views import LoginView, LogoutView
 app_name = "auction_app"
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", views.index, name="index"),
+    path("home", views.index, name="index"),
     path("login", views.login_view, name="login"),
     path("signup", views.signup, name="signup"),
     path('logout', LogoutView.as_view(template_name='auction_app/logout.html'), name='logout'),
-    
+    path("user_listings", views.user_listings, name="user_listings"),
     path("addListing", views.addListing, name="add_listing"),
 ]
