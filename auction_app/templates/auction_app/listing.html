@@ -1,0 +1,47 @@
+{% extends "auction_app/layout.html" %}
+
+{% block title %}
+{{ listing.name }}
+{% endblock %}
+
+{% block body %}
+
+{% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-{{ message.tags }}">
+    {{ message }}
+  </div>
+  {% endfor %}
+{% endif %}
+
+<h2 class="listing-name">{{ listing.name }}</h2>
+
+<div class="listing-img" >
+  <img alt="{{ listing.name }} - img" src="{{ listing.image.url }}" />
+</div>
+
+<div class="bid-info">
+  {% if bid %}
+  Current Highest Bid: <strong style="color: var(--danger)">TK {{ bid.highest_bid }}</strong>
+  <br>
+  By: <span style="color: var(--warning)">{{ bid.user }}</span>
+  <div class="text-muted">Bid added at {{ bid.added }}</div>
+  <br><br>
+  {% else %}
+  <span style="color: var(--success)">
+    No Bids Currently Placed
+  </span>
+  <br>
+  Bids start from <strong style="color: var(--warning)">TK {{ listing.initial }}</strong>
+  <br><br>
+  {% endif %}
+  <a class="btn btn-success" href="{% url 'add_to' listing.id %}">Add to WatchList</a>
+  
+</div>
+<hr>
+{% else %}
+<div class="alert alert-info">
+  Owner cannot bid on their own item.
+</div>
+
+{% endblock %}
