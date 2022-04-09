@@ -10,13 +10,24 @@ from django.contrib import messages
 
 from decimal import *
 
-from .models import User
+from .models import Listing, User
 from .forms import ListingForm
 
 
 # Create your views here.
 def index(request):
-    return render(request, "auction_app/index.html")
+    listings = []
+    items = Listing.objects.filter()
+    for item in items:
+       
+        listings.append({
+            'listing': item,
+            
+        })
+    context = {
+        'listings': listings,
+    }
+    return render(request, "auction_app/index.html", context)
 
 def login_view(request):
     if request.method == "POST":
@@ -83,5 +94,17 @@ def addListing(request):
     }
     return render(request, 'auction_app/createauction.html', context)
 
-
-
+def user_listings(request):
+    listings = []
+    current_user_listings = Listing.objects.filter(user=request.user)
+    for item in current_user_listings:
+        
+        listings.append({
+            'listing': item,
+            
+        })
+    context = {
+        'listings': Listing,
+    }
+    
+    return render(request, 'auction_app/mylisting.html', context)
