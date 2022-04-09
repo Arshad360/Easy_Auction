@@ -18,22 +18,14 @@
       {% endif %}
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link" href="">Active Listings</a>
+          <a class="nav-link" href="/home">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="">Categories</a>
-        </li>
+      
         {% if user.is_authenticated %}
+        
         <li class="nav-item">
-          <a class="nav-link" href="">WatchList</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="">My Posted Items</a>
+            <a class="nav-link" href="/user_listings">My Posted Items</a>
           </li>
-        <a href="/addListing" class="float">
-            <i class="fa fa-plus my-float"></i>
-            
-          </a>
         <li class="nav-item">
           <a class="nav-link" href="/logout">Log Out</a>
         </li>
